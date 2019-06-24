@@ -4,6 +4,7 @@ pipeline {
     stage('Build') {
       steps {
         sh 'echo Build'
+        bat 'npm run build'
       }
     }
     stage('Performance Test') {
@@ -11,6 +12,7 @@ pipeline {
         stage('Performance Test') {
           steps {
             sh 'echo Performance Test'
+            
           }
         }
         stage('Unit Test') {
