@@ -1,36 +1,28 @@
 pipeline {
-  agent any
-  stages {
-    stage('Build') {
-      steps {
-        sh 'echo Build'
-       
-      }
-    }
-    stage('Performance Test') {
-      parallel {
-        stage('Performance Test') {
-          steps {
-            sh 'echo Performance Test'
-            
-          }
+    agent any
+    
+    tools {nodejs "node"}
+
+    stages {
+         stage('dep') {
+            steps {
+                bat 'npm install'
+            }
         }
-        stage('Unit Test') {
-          steps {
-            sh 'echo Unit Test'
-          }
+        stage('builds') {
+            steps {
+                bat 'npm run build'
+            }
         }
-      }
+        stage('tests') {
+            steps {
+                bat 'npm run test'
+            }
+        }
+        stage('deploys ') {
+            steps {
+                bat 'npm run deploy'
+            }
+        }
     }
-    stage('Static Analysis') {
-      steps {
-        sh 'echo Static Analysis'
-      }
-    }
-    stage('Deploy') {
-      steps {
-        sh 'echo Deploy'
-      }
-    }
-  }
 }
