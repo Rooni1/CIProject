@@ -3,8 +3,8 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        //sh 'echo Build'
-        bat 'npm run build'
+        sh 'echo Build'
+       
       }
     }
     stage('Performance Test') {
