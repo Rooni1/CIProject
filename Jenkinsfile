@@ -4,7 +4,7 @@ pipeline {
     tools {nodejs "node"}
 
     stages {
-         stage('dep') {
+         stage('Dependencies') {
             steps {
                 bat 'npm install'
             }
